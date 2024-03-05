@@ -1,21 +1,28 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20' 
-            args '-u root' 
-        }
-    }
+    agent none
     
     
     stages {
 
         stage('Test'){
+            agent {
+        docker {
+            image 'node:20' 
+            args '-u root' 
+        }
+    }
             steps{
                 sh 'node --version'
             }
         }
        
         stage('Install Dependencies') {
+            agent {
+        docker {
+            image 'node:20' 
+            args '-u root' 
+        }
+    }
             steps {
                 sh 'ls -al'
                 sh 'cd Docker && ls -al'
@@ -24,6 +31,7 @@ pipeline {
         }
         
         stage('Build Docker Image') {
+            agent any
             steps {
                 script{
                     sh "cd Docker && docker build -t ayush/nod:tag1"
@@ -34,16 +42,19 @@ pipeline {
     
     post {
         success {
+            node(null){
             echo "Build succeeded!"
-
-        
+            }
+           
         }
         failure {
+            node(null){
                  echo "Build failed"
             }
            
-        
+        }
         always {
+            node(null){
                 echo "Pipeline completed"
             }
             
