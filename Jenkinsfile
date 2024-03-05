@@ -34,7 +34,7 @@ pipeline {
             agent any
             steps {
                 script{
-                    sh "cd Docker && docker build -t ayush/nod:tag1"
+                    sh "cd Docker && docker build -t ayush/nod:v2 ."
                 }
             }
         }
