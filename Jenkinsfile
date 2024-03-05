@@ -25,7 +25,9 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                sh 'cd Docker && docker build -t ayush/nodeapp:v1 .'
+                script{
+                    sh 'cd Docker && docker build -t ayush/nodeapp:v1 .'
+                }
             }
         }
     }
