@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'ls -al'
                 sh 'cd Docker && ls -al'
-                sh 'npm install'
+                sh 'cd Docker && npm install'
             }
         }
         
