@@ -1,14 +1,19 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:20' 
+            args '-u root' 
+        }
+    }
     
     
     stages {
 
-        // stage('Test'){
-        //     steps{
-        //         sh 'node --version'
-        //     }
-        // }
+        stage('Test'){
+            steps{
+                sh 'node --version'
+            }
+        }
        
         stage('Install Dependencies') {
             steps {
