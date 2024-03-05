@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // Build Docker image using Dockerfile from repository
                 script {
-                    docker.build('your-image-name:latest', '-f Dockerfile .')
+                    docker.build('nodejs-image:latest', '-f Docker/Dockerfile .')
                 }
             }
         }
