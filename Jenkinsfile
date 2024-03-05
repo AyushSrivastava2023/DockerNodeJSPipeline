@@ -25,10 +25,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                // Build Docker image using Dockerfile from repository
-                script {
-                    docker.build('nodejs-image:latest', '-f Docker/Dockerfile .')
-                }
+                sh 'cd Docker && docker build -t ayush/nodeapp:v1 .'
             }
         }
     }
@@ -36,6 +33,7 @@ pipeline {
     post {
         success {
             echo "Build succeeded!"
+
         
         }
         failure {
