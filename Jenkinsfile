@@ -18,8 +18,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'ls -al'
-                sh 'cd Docker'
-                sh 'ls'
+                sh 'cd Docker && ls -al'
                 sh 'npm install'
             }
         }
